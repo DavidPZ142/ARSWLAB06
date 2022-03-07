@@ -21,9 +21,7 @@
 
 	return {
 		getBlueprintsByAuthor:function(authname,callback){
-			callback(
-				mockdata[authname]
-			);
+			callback(mockdata[authname]);
 		},
 
 		getBlueprintsByNameAndAuthor:function(authname,bpname,callback){

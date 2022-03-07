@@ -3,20 +3,17 @@ var module = apimock;
 
 var app=(function(){
 
-    function getBluePrintname(){
-        author = $(#author).val();
+    function getBluePrintname(author){
         if (author == ""){
-            alert("Ingrese un nombre");
-
+            alert("Escriba un nombre :v");
+        }else{
+           module.getBlueprintsByAuthor(author);
+           
         }
-        else{
-            module.getBlueprintsByAuthor(author,(req,res) =>{
-                alert(author); });
-        }
-    }
+    };
 
     return{
         getBluePrintname : getBluePrintname
-    }
+    };
 
 })();
