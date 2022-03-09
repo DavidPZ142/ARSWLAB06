@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
  * @author hcadavid
  */
 @RestController
-@RequestMapping(value = "/v1/blueprint")
+@RequestMapping(value = "/blueprints")
 
 
 public class BlueprintAPIController {

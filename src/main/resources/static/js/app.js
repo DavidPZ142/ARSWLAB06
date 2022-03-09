@@ -1,10 +1,9 @@
-
-var module = apimock;
-
 var app=(function(){
+    //var module = apimock;
+    var module = apiclient;
     var _author = null;
     var _plano = null;
-    let puntos = 0;
+    let puntos = null;
 
     function getBluePrintname(author){
         _author = author;
@@ -16,44 +15,53 @@ var app=(function(){
     };
 
     var mapFunction = function(variable){
+        let puntos = 0;
         if(variable != null){
-            //alert("Entra a algo");
             let html = "<tr>";
-            var arreglo = variable.map(function (blueprint){
-                html+= "<td>" + blueprint.name
-                html+= "<td>" + blueprint.points.length
+            var arreglo = variable.map(function (blueprint) {
+                html += "<td>" + blueprint.name
+                html += "<td>" + blueprint.points.length
+                html += "<td> <button type='button' class='btn btn-success' onclick='app.draw(\""+_author+"\",\""+blueprint.name+"\");'>Abrir Plano</button></td>"
                 html+= "</tr>"
                 puntos += blueprint.points.length;
                 //console.log(html);  
                 $('#tbody').html(html)    
             })
-            $('#totalUserPoint').html(puntos)
+            $('#totalUserPoint').html("Total user points: " + puntos)
 
-         
-            /*
+            /*No sirvio
             let total = variable.reduce(function(sum,num){
             
                 return sum.points.length + num.points.length
 
-                })
-            console.log(total)
-            $('#totalUserPoint').html(total)
-            */
-
-                
+                })*/
                 
         }else{
             alert("No encontro al autor");
         }
-
-    
     }
 
+    function draw(author, name){
+        module.getBlueprintsByNameAndAuthor(author,name,function (blueprint){
+            let canvas = $("#myCanvas")[0];
 
-    
+            let canvasd = canvas.getContext("2d");
+            canvasd.clearRect(0, 0, canvas.width, canvas.height);
+            canvasd.beginPath();
+
+            for (let i =1 ; i< blueprint.points.length; i++){
+                canvasd.moveTo(blueprint.points[i-1].x,blueprint.points[i-1].y);
+                canvasd.lineTo(blueprint.points[i].x,blueprint.points[i].y);
+                canvasd.stroke();
+            }
+
+        })
+
+    }
 
     return{
-        getBluePrintname : getBluePrintname
+        getBluePrintname : getBluePrintname,
+        draw: draw
     };
 
 })();
