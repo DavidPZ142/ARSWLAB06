@@ -32,17 +32,25 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence{
 
     public InMemoryBlueprintPersistence() {
         //load stub data
-        Point[] pts=new Point[]{new Point(140, 140),new Point(115, 115)};
-        Point[] pts1 =new Point[]{new Point(160, 120),new Point(100, 121)};
-        Point[] pts2 =new Point[]{new Point(134, 98),new Point(21, 34)};
-        Blueprint bp=new Blueprint("Nicolas",  "EdificioG ",pts);
-        Blueprint bp1 = new Blueprint("David", "EdificioE",pts1);
-        Blueprint bp2 = new Blueprint("David", "EdificioF ",pts1);
+        Point[] pts = new Point[]{new Point(140, 140), new Point(115, 115)};
+        Point[] pts1 = new Point[]{new Point(160, 120), new Point(100, 121)};
+        Point[] pts2 = new Point[]{new Point(134, 98), new Point(21, 34)};
+        Point[] pts3 = new Point[]{new Point(121, 78), new Point(32, 34), new Point(200, 121), new Point(128, 34)};
+        Point[] pts4 =new Point[]{new Point(154, 98),new Point(30, 134)};
+        Point[] pts5 =new Point[]{new Point(10, 10),new Point(50, 10),new Point(10, 40),new Point(50, 40),new Point(30, 60)};
+        Blueprint bp=new Blueprint("Nicolas",  "LaPiscina",pts);
+        Blueprint bp1 = new Blueprint("David", "CampNou",pts1);
+        Blueprint bp2 = new Blueprint("David", "Campin",pts2);
+        Blueprint bp4 = new Blueprint("David", "Atanasio",pts3);
+        Blueprint bp6 = new Blueprint("Nicolas", "Casa", pts5);
         Blueprint bp3 = new Blueprint("DaVinci", "Obelisco",pts1);
         blueprints.put(new Tuple<>(bp.getAuthor(),bp.getName()), bp);
         blueprints.put(new Tuple<>(bp1.getAuthor(),bp1.getName()), bp1);
         blueprints.put(new Tuple<>(bp2.getAuthor(),bp2.getName()), bp2);
         blueprints.put(new Tuple<>(bp3.getAuthor(),bp3.getName()), bp3);
+        blueprints.put(new Tuple<>(bp4.getAuthor(),bp4.getName()), bp4);
+        blueprints.put(new Tuple<>(bp6.getAuthor(),bp6.getName()), bp6);
+
         
     }    
     

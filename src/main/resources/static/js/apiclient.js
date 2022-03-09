@@ -2,16 +2,19 @@ var apiclient = (function (){
 
     return {
         getBlueprintsByAuthor: function (author, callback){
-            $.get("/blueprints/"+author, function (data){
-                callback(null, data);
+            //console.log(author)
+            $.get("/v1/blueprint/"+author, function (data){
+
+                callback( data);
+
             }).fail(function (){
                 alert("Error");
             });
         },
 
         getBlueprintsByNameAndAuthor: function (author, name, callback){
-            $.get("/blueprints/"+author+"/"+name,function (data){
-                callback(null,data)
+            $.get("/v1/blueprint/"+author+"/"+name,function (data){
+                callback(data)
             }).fail(function (){
                 alert("Error");
             });

@@ -1,6 +1,7 @@
+var module = apiclient;
 var app=(function(){
     //var module = apimock;
-    var module = apiclient;
+
     var _author = null;
     var _plano = null;
     let puntos = null;
@@ -14,7 +15,7 @@ var app=(function(){
         }
     };
 
-    var mapFunction = function(variable){
+    var mapFunction = function( variable){
         let puntos = 0;
         if(variable != null){
             let html = "<tr>";
@@ -42,12 +43,14 @@ var app=(function(){
     }
 
     function draw(author, name){
-        module.getBlueprintsByNameAndAuthor(author,name,function (blueprint){
+        module.getBlueprintsByNameAndAuthor(author,name,function ( blueprint){
             let canvas = $("#myCanvas")[0];
 
             let canvasd = canvas.getContext("2d");
             canvasd.clearRect(0, 0, canvas.width, canvas.height);
             canvasd.beginPath();
+
+            console.log(blueprint)
 
             for (let i =1 ; i< blueprint.points.length; i++){
                 canvasd.moveTo(blueprint.points[i-1].x,blueprint.points[i-1].y);
